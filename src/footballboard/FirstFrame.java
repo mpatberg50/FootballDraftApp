@@ -401,26 +401,34 @@ public class FirstFrame extends javax.swing.JFrame {
 
     private void StartDraftButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StartDraftButtonActionPerformed
         
-        try
+        
+        if(!teamMods.getTeamsWithOutPick().isEmpty())
         {
-            genMods.add("QB",Integer.parseInt(QBTextField.getText()));
-            genMods.add("RB",Integer.parseInt(RBTextField.getText()));
-            genMods.add("WR",Integer.parseInt(WRTextField.getText()));
-            genMods.add("TE",Integer.parseInt(TETextField.getText()));
-            genMods.add("DEF",Integer.parseInt(DefTextField.getText()));
-            genMods.add("K", Integer.parseInt(KTextField.getText()));
-            genMods.add("Rounds" ,Integer.parseInt(RoundTextField.getText()));
-            genMods.add("RB/WR/TE",Integer.parseInt(RBWRTETextField.getText()));
-
-
-            DraftGUI draftGui = new DraftGUI();
-            draftGui.setDefaultCloseOperation(EXIT_ON_CLOSE);
-            draftGui.setVisible(true);
-            this.dispose();
+            JOptionPane.showMessageDialog(this, "Every team needs a draft pick before proceeding to the draft.");
         }
-        catch(NumberFormatException e)
+        else
         {
-            JOptionPane.showMessageDialog(this, "You need to only enter integers into the input boxes.");
+            try
+            {
+                genMods.add("QB",Integer.parseInt(QBTextField.getText()));
+                genMods.add("RB",Integer.parseInt(RBTextField.getText()));
+                genMods.add("WR",Integer.parseInt(WRTextField.getText()));
+                genMods.add("TE",Integer.parseInt(TETextField.getText()));
+                genMods.add("DEF",Integer.parseInt(DefTextField.getText()));
+                genMods.add("K", Integer.parseInt(KTextField.getText()));
+                genMods.add("Rounds" ,Integer.parseInt(RoundTextField.getText()));
+                genMods.add("RB/WR/TE",Integer.parseInt(RBWRTETextField.getText()));
+
+
+                DraftGUI draftGui = new DraftGUI();
+                draftGui.setDefaultCloseOperation(EXIT_ON_CLOSE);
+                draftGui.setVisible(true);
+                this.dispose();
+            }
+            catch(NumberFormatException e)
+            {
+                JOptionPane.showMessageDialog(this, "You need to only enter integers into the input boxes.");
+            }
         }
     }//GEN-LAST:event_StartDraftButtonActionPerformed
 

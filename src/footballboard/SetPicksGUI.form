@@ -131,7 +131,7 @@
                 <Column editable="true" title="Team" type="java.lang.String"/>
               </Table>
             </Property>
-            <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor" postCode="DefaultTableModel dtm = new DefaultTableModel();&#xa;DraftTable.setModel(dtm);&#xa;dtm.addColumn(&quot;Pick Number&quot;);&#xa;dtm.addColumn(&quot;Team Name&quot;);&#xa;&#xa;for(int x =1; x&lt;=teamMods.getTeams().size();x++)&#xa;    dtm.addRow(new Object[] {x});">
+            <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor" postCode="DefaultTableModel dtm = new DefaultTableModel();&#xa;DraftTable.setModel(dtm);&#xa;dtm.addColumn(&quot;Pick Number&quot;);&#xa;dtm.addColumn(&quot;Team Name&quot;);&#xa;&#xa;for(int x =1; x&lt;=teamMods.getTeams().size();x++)&#xa;    dtm.addRow(new Object[] {x});&#xa;&#xa;ArrayList&lt;String&gt; teamList = new ArrayList();&#xa;&#xa;teamList = teamMods.getTeams();&#xa;&#xa;for(int x = 0; x&lt;teamList.size();x++)&#xa;{&#xa;    if(teamMods.getPickNumber(teamList.get(x))!=-1)&#xa;        DraftTable.setValueAt(teamList.get(x),teamMods.getPickNumber(teamList.get(x))-1, 1);&#xa;}">
               <TableColumnModel selectionModel="0">
                 <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                   <Title/>

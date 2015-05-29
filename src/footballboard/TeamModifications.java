@@ -51,6 +51,7 @@ public class TeamModifications {
     }
     
     
+    
     //adds team to database
     public void addNewTeam(String teamName)
     {
@@ -252,4 +253,6 @@ public class TeamModifications {
             e.printStackTrace();
         }
     }
+    
+   
 }

@@ -8,6 +8,7 @@ package footballboard;
 import java.util.ArrayList;
 import javax.swing.table.*;
 import java.util.Random;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Patberg
@@ -90,6 +91,16 @@ public class SetPicksGUI extends javax.swing.JFrame {
 
         for(int x =1; x<=teamMods.getTeams().size();x++)
         dtm.addRow(new Object[] {x});
+
+        ArrayList<String> teamList = new ArrayList();
+
+        teamList = teamMods.getTeams();
+
+        for(int x = 0; x<teamList.size();x++)
+        {
+            if(teamMods.getPickNumber(teamList.get(x))!=-1)
+            DraftTable.setValueAt(teamList.get(x),teamMods.getPickNumber(teamList.get(x))-1, 1);
+        }
 
         BackToSettingsButton.setText("Back To Settings");
         BackToSettingsButton.addActionListener(new java.awt.event.ActionListener() {
@@ -270,11 +281,19 @@ public class SetPicksGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        DraftGUI draftGui = new DraftGUI();
-        draftGui.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        draftGui.setVisible(true);
-        this.dispose();
-                
+        ArrayList<String> teamsWithoutPicks = teamMods.getTeamsWithOutPick();
+        
+        if(teamsWithoutPicks.size()==0)
+        {
+            DraftGUI draftGui = new DraftGUI();
+            draftGui.setDefaultCloseOperation(EXIT_ON_CLOSE);
+            draftGui.setVisible(true);
+            this.dispose();
+        }    
+        else
+        {
+            JOptionPane.showMessageDialog(this, "Every team needs a draft pick to proceed to the draft.");
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void AddPickActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddPickActionPerformed
